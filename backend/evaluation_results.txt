@@ -4,7 +4,7 @@ Model Evaluation Results
 Overall Performance:
 Accuracy: 0.9530
 Balanced Accuracy: 0.5000
-AUC-ROC: 0.3238
+AUC-ROC: 0.3237
 AUC-PR: 0.0323
 
 Class-wise Performance:
