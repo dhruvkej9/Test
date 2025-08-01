@@ -2,13 +2,22 @@ import torch
 import torch.nn.functional as F
 from torch_geometric.nn import GCNConv
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from rdkit import Chem
 from rdkit.Chem import rdmolops
 import numpy as np
-from agent import router as agent_router
 
 app = FastAPI()
+
+# Add CORS middleware for cross-origin requests from frontend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
 
 MAX_ATOMS = 50  # Increased from 10 to 50 for robust support
 
@@ -46,8 +55,6 @@ def smiles_to_graph(smiles):
 # Dummy model for demonstration (replace with your trained model)
 model = GNN(num_node_features=MAX_ATOMS, hidden_channels=16)
 model.eval()
-
-app.include_router(agent_router)
 
 @app.post("/predict")
 def predict_property(request: MoleculeRequest):
