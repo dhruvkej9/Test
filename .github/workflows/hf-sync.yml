@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout GitHub repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch full history to avoid shallow clone issues
 
       - name: Set up git
         run: |
@@ -20,6 +22,11 @@ jobs:
       - name: Add Hugging Face remote
         run: |
           git remote add hf https://dhruvkej9:${{ secrets.HUGGINGFACE_TOKEN }}@huggingface.co/spaces/dhruvkej9/my-gnn-backend
+
+      - name: Pull latest from Hugging Face Space (handle unrelated histories)
+        run: |
+          git fetch hf main || true
+          git pull hf main --allow-unrelated-histories --no-edit || true
 
       - name: Push to Hugging Face Space
         run: |
