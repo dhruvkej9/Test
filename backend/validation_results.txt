@@ -1,0 +1,8 @@
+Overall Accuracy: 0.9433
+Macro F1: 0.4854
+Weighted F1: 0.9158
+Class 0 - Precision: 0.9433, Recall: 1.0000, F1: 0.9708
+Class 1 - Precision: 0.0000, Recall: 0.0000, F1: 0.0000
+Confusion Matrix:
+[[1265    0]
+ [  76    0]]

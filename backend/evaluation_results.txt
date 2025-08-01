@@ -1,0 +1,24 @@
+Model Evaluation Results
+==================================================
+
+Overall Performance:
+Accuracy: 0.9530
+Balanced Accuracy: 0.5000
+AUC-ROC: 0.3238
+AUC-PR: 0.0323
+
+Class-wise Performance:
+Class 0 - Precision: 0.9530, Recall: 1.0000, F1: 0.9759
+Class 1 - Precision: 0.0000, Recall: 0.0000, F1: 0.0000
+
+Averaged Metrics:
+Macro F1: 0.4880
+Weighted F1: 0.9301
+
+Imbalanced Dataset Metrics:
+Sensitivity: 0.0000
+Specificity: 1.0000
+
+Confusion Matrix:
+[[1278    0]
+ [  63    0]]

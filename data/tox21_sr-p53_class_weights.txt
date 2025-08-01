@@ -1,0 +1,4 @@
+# Class weights for imbalanced dataset training
+# Format: class_label: weight
+0: 0.533302
+1: 8.007092
