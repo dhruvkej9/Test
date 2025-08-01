@@ -12,7 +12,7 @@ jobs:
       - name: Checkout GitHub repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Fetch full history to avoid shallow clone issues
+          fetch-depth: 0
 
       - name: Set up git
         run: |
@@ -30,4 +30,4 @@ jobs:
 
       - name: Push to Hugging Face Space
         run: |
-          git push hf main --force
+          git push hf main --force-with-lease
