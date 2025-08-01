@@ -1,0 +1,31 @@
+name: Sync to Hugging Face Space
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch full history for proper sync
+          
+      - name: Set up Git user
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          
+      - name: Add Hugging Face remote and push
+        env:
+          HUGGINGFACE_TOKEN: ${{ secrets.HUGGINGFACE_TOKEN }}
+        run: |
+          # Add Hugging Face Space as remote
+          git remote add hf https://dhruvkej9:$HUGGINGFACE_TOKEN@huggingface.co/spaces/dhruvkej9/my-gnn-backend
+          
+          # Force push main branch to Hugging Face Space
+          git push --force hf main
