@@ -27,7 +27,12 @@ if uploaded_file:
             if pd.isna(val):
                 continue
             # Use the same name_to_smiles logic as main app
-            from app_advanced import name_to_smiles
+            import sys
+            import os
+            # Add parent directory to path to access src module
+            parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            sys.path.insert(0, os.path.join(parent_dir, 'frontend'))
+            from src.utils import name_to_smiles
             smiles, _ = name_to_smiles(val)
             if not smiles:
                 results.append({"Input": val, "Error": "Could not resolve to SMILES"})

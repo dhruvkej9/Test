@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import os
 from rdkit import Chem
 from rdkit.Chem import Draw
 
@@ -19,7 +20,9 @@ if st.button("Predict"):
         if mol:
             st.image(Draw.MolToImage(mol, size=(300, 300)), caption="Molecule Structure")
             with st.spinner("Predicting..."):
-                response = requests.post("http://localhost:8000/predict", json={"smiles": smiles})
+                # Use relative path for API that works both locally and on Vercel
+                api_url = "/api/predict" if os.getenv("VERCEL") else "http://localhost:8000/predict"
+                response = requests.post(api_url, json={"smiles": smiles})
                 if response.ok:
                     result = response.json()
                     if "prediction" in result:

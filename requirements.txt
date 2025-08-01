@@ -1,5 +1,5 @@
 fastapi
-uvicorn
+uvicorn[standard]
 torch
 torch-geometric
 rdkit
@@ -11,3 +11,7 @@ scikit-learn
 py3Dmol
 stmol
 ipywidgets==7.6.3
+pydantic
+matplotlib
+pubchempy
+streamlit-aggrid
