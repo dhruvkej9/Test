@@ -27,7 +27,7 @@ if uploaded_file:
             if pd.isna(val):
                 continue
             # Use the same name_to_smiles logic as main app
-            from app_advanced import name_to_smiles
+            from frontend.app import name_to_smiles
             smiles, _ = name_to_smiles(val)
             if not smiles:
                 results.append({"Input": val, "Error": "Could not resolve to SMILES"})
