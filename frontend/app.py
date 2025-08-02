@@ -19,7 +19,7 @@ if st.button("Predict"):
         if mol:
             st.image(Draw.MolToImage(mol, size=(300, 300)), caption="Molecule Structure")
             with st.spinner("Predicting..."):
-                response = requests.post("http://localhost:8000/predict", json={"smiles": smiles})
+                response = requests.post("https://test-2gzm.onrender.com/predict", json={"smiles": smiles})
                 if response.ok:
                     result = response.json()
                     if "prediction" in result:
