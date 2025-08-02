@@ -147,7 +147,7 @@ def show_pubchem_details(cid):
 @st.cache_data(ttl=60)
 def get_model_accuracy():
     try:
-        response = requests.get("http://localhost:8000/accuracy")
+        response = requests.get("https://test-2gzm.onrender.com/accuracy")
         if response.ok:
             data = response.json()
             if data.get("accuracy") is not None:
@@ -275,7 +275,7 @@ def agentic_reasoning(user_goal: str, memory: List[dict]):
             else:
                 steps.append(f"Now I'll call my prediction model for {smiles}.")
                 try:
-                    response = requests.post("http://localhost:8000/predict", json={"smiles": smiles})
+                    response = requests.post("https://test-2gzm.onrender.com/predict", json={"smiles": smiles})
                     if response.ok:
                         result = response.json()
                         interpretation = interpret_prediction(result, user_goal)
@@ -505,7 +505,7 @@ if predict_clicked:
                 cid = get_pubchem_cid(smiles)
                 with st.spinner(f"Predicting for {query}..."):
                     try:
-                        response = requests.post("http://localhost:8000/predict", json={"smiles": smiles})
+                        response = requests.post("https://test-2gzm.onrender.com/predict", json={"smiles": smiles})
                         if response.ok:
                             result = response.json()
                             toxicity = result.get("toxicity")
