@@ -1,0 +1,10 @@
+streamlit>=1.28.0
+requests
+pandas
+numpy
+matplotlib
+rdkit
+pubchempy
+st-aggrid
+py3Dmol
+stmol
