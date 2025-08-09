@@ -6,7 +6,7 @@ from pydantic import BaseModel
 from rdkit import Chem
 from rdkit.Chem import rdmolops
 import numpy as np
-from drugs.backend.agent import router as agent_router
+# from agent import router as agent_router
 
 app = FastAPI()
 
@@ -47,7 +47,7 @@ def smiles_to_graph(smiles):
 model = GNN(num_node_features=MAX_ATOMS, hidden_channels=16)
 model.eval()
 
-app.include_router(agent_router)
+# app.include_router(agent_router)
 
 @app.post("/predict")
 def predict_property(request: MoleculeRequest):

@@ -1,8 +1,8 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
-from drugs.backend.gnn_api import smiles_to_graph, GNN, MAX_ATOMS
+from gnn_api import smiles_to_graph, GNN, MAX_ATOMS
 import torch
-from drugs.backend.gnn_api_advanced import smiles_to_graph as adv_smiles_to_graph, model as adv_model, MAX_ATOMS as ADV_MAX_ATOMS
+from gnn_api_advanced import smiles_to_graph as adv_smiles_to_graph, model as adv_model, MAX_ATOMS as ADV_MAX_ATOMS
 import numpy as np
 
 # Dummy model for demonstration (replace with your trained model)
